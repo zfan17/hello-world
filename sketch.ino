@@ -69,7 +69,7 @@ MotorFWD(); // calls MotorFWD subroutine
 } 
  
  
-Void MotorFWD() { 
+void MotorFWD() { 
 digitalWrite(ledPin, HIGH); // turn on LED 
  
 myMotorL->setSpeed(255); 
