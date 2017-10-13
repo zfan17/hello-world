@@ -5,7 +5,7 @@
   
   
 const int buttonPinFWD = 2; // the number of the pushbutton pin 
-const int buttonPinBKF = 3; 
+const int buttonPinBKD = 3; 
 const int buttonPinSP = 4; 
 const int buttonPinLFT = 5; 
 const int buttonPinSLW = 6; 
@@ -33,7 +33,7 @@ pinMode(ledPin, OUTPUT);
   // initialize the pushbutton pin as an input: 
   
 pinMode(buttonPinFWD, INPUT); 
-pinMode(buttonPinBKF, INPUT); 
+pinMode(buttonPinBKD, INPUT); 
 pinMode(buttonPinSP, INPUT); 
 pinMode(buttonPinLFT, INPUT); 
 pinMode(buttonPinSLW, INPUT); 
@@ -48,19 +48,24 @@ void loop() {
   // put your main code here, to run repeatedly: 
   // read the state of the pushbutton value: 
  
-while (digitalRead(pins[2]) == HIGH) {
-MotorFWD()} // calls MotorFWD subroutine
-while (digitalRead(pins[3]) == HIGH) {
-MotorBKD()}
-while (digitalRead(pins[4]) == HIGH) {
-MotorSP()}
-while (digitalRead(pins[5]) == HIGH) {
-MotorLFT()}
-while (digitalRead(pins[6]) == HIGH) {
-MotorSLW()}
-while (digitalRead(pins[7]) == HIGH) {
-MotorRHT()}
-
+while (digitalRead(buttonPinFWD) == HIGH) {
+MotorFWD();
+} // calls MotorFWD subroutine
+while (digitalRead(buttonPinBKD) == HIGH) {
+MotorBKD();
+}
+while (digitalRead(buttonPinSP) == HIGH) {
+MotorSP();
+}
+while (digitalRead(buttonPinLFT) == HIGH) {
+MotorLFT();
+}
+while (digitalRead(buttonPinSLW) == HIGH) {
+MotorSLW();
+}
+while (digitalRead(buttonPinRHT) == HIGH) {
+MotorRHT();
+}
     
  
  
@@ -77,5 +82,58 @@ myMotorL->run(FORWARD);
 myMotorR->run(FORWARD); 
   // turn on motor 
 } 
+
+void MotorBKD() { 
+digitalWrite(ledPin, HIGH); // turn on LED 
  
+myMotorL->setSpeed(255); 
+myMotorR->setSpeed(255); 
  
+myMotorL->run(BACKWARD); 
+myMotorR->run(BACKWARD); 
+  // turn on motor 
+} 
+
+void MotorSP() { 
+digitalWrite(ledPin, HIGH); // turn on LED 
+ 
+myMotorL->setSpeed(255); 
+myMotorR->setSpeed(150); 
+ 
+myMotorL->run(FORWARD); 
+myMotorR->run(FORWARD); 
+  // turn on motor 
+} 
+
+void MotorLFT() { 
+digitalWrite(ledPin, HIGH); // turn on LED 
+ 
+myMotorL->setSpeed(200); 
+myMotorR->setSpeed(255); 
+ 
+myMotorL->run(FORWARD); 
+myMotorR->run(FORWARD); 
+  // turn on motor 
+} 
+
+void MotorSLW() { 
+digitalWrite(ledPin, HIGH); // turn on LED 
+ 
+myMotorL->setSpeed(150); 
+myMotorR->setSpeed(150); 
+ 
+myMotorL->run(FORWARD); 
+myMotorR->run(FORWARD); 
+  // turn on motor 
+} 
+
+void MotorRHT() { 
+digitalWrite(ledPin, HIGH); // turn on LED 
+ 
+myMotorL->setSpeed(255); 
+myMotorR->setSpeed(200); 
+ 
+myMotorL->run(FORWARD); 
+myMotorR->run(FORWARD); 
+  // turn on motor 
+} 
