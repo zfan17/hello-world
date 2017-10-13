@@ -12,13 +12,7 @@ const int buttonPinSLW = 6;
 const int buttonPinRHT = 7; 
   
 const int ledPin = 13; // the number of the LED pin 
-  
-int buttonState1 = 0; // variable for reading the pushbutton status 
-int buttonState2 = 0; 
-int buttonState3 = 0; 
-int buttonState4 = 0; 
-int buttonState5 = 0; 
-int buttonState6 = 0; 
+   
   
   
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();  
@@ -53,16 +47,20 @@ AFMS.begin(); // create with the default frequency 1.6KHz
 void loop() { 
   // put your main code here, to run repeatedly: 
   // read the state of the pushbutton value: 
-ButtonState1 = digitalRead(buttonPinFWD); 
-ButtonState2 = digitalRead(buttonPinBKW); 
-ButtonState3 = digitalRead(buttonPinSP); 
-ButtonState4 = digitalRead(buttonPinLFT); 
-ButtonState5 = digitalRead(buttonPinSLW); 
-ButtonState6 = digitalRead(buttonPinRHT); 
  
-if (ButtonState1 == HIGH) 
-MotorFWD(); // calls MotorFWD subroutine 
- 
+while (digitalRead(pins[2]) == HIGH) {
+MotorFWD()} // calls MotorFWD subroutine
+while (digitalRead(pins[3]) == HIGH) {
+MotorBKD()}
+while (digitalRead(pins[4]) == HIGH) {
+MotorSP()}
+while (digitalRead(pins[5]) == HIGH) {
+MotorLFT()}
+while (digitalRead(pins[6]) == HIGH) {
+MotorSLW()}
+while (digitalRead(pins[7]) == HIGH) {
+MotorRHT()}
+
     
  
  
